@@ -18,6 +18,13 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', fn() => view('dashboard'))->name('dashboard');
 
+    // Serve evidence images securely
+    Route::get('/evidence/{filename}', function ($filename) {
+        $path = storage_path('app/private/evidences/' . $filename);
+        abort_unless(file_exists($path), 404);
+        return response()->file($path);
+    })->name('evidence.show');
+
     // Employees — Admin only
     Route::resource('employees', EmployeeController::class)
         ->middleware('department:Admin');
