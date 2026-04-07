@@ -8,6 +8,8 @@ class Evidence extends Model
 {
     use HasFactory;
 
+    protected $table = 'evidences';
+
     protected $fillable = ['order_id', 'category', 'image_url', 'uploaded_at'];
 
     public function order()

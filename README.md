@@ -57,3 +57,33 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+
+## Halcon App — Sprint 2 Update
+
+### Changes
+- Added `Employee`, `Order`, and `Evidence` models with relationships
+- Created migrations for all three entities with FK constraints
+- Built `EmployeeController`, `OrderController`, `TrackingController`
+- Seeded default admin and department users (password: `password`)
+- Seeded 20 test orders via factory
+- Public home page with order tracking by invoice + customer code
+- Protected dashboard, employee management, order CRUD
+- Logical deletion (archive/restore) for orders
+- Photo evidence upload for "In Route" and "Delivered" statuses
+- Department-based middleware for route protection
+
+### How to set up
+```bash
+cp .env.example .env
+php artisan key:generate
+# configure DB in .env
+php artisan migrate:fresh --seed
+php artisan serve
+```
+
+### Default Login
+- admin@halcon.com / password
+- sales@halcon.com / password
+- warehouse@halcon.com / password
+- route@halcon.com / password
